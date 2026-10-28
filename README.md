@@ -52,6 +52,21 @@ The copyable edition is generated from a repository-contained template and writt
 
 `examples/creative-test.html` is the separate, focused creative-feature test page. It does not include all four cards of the full app.
 
+## Publish on GitHub Pages
+
+The Pages site is `https://kimchampion.github.io/2perspectives/`. In the repository's **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**. Serving `main` directly publishes the unbuilt React source and leaves the page blank.
+
+The workflow in `.github/workflows/deploy-pages.yml` uses Node 24, installs dependencies, runs tests, builds the app, and publishes only `dist/`. It runs on pushes to `main` and can also be started manually from the Actions tab. Generated build files stay out of Git.
+
+`npm run build:pages` sets the asset base to `/2perspectives/`. Local development, the regular production build, and standalone exports keep their existing paths. To preview the Pages build locally, run:
+
+```sh
+npm run build:pages
+npm run preview -- --base=/2perspectives/
+```
+
+Then open `http://localhost:4173/2perspectives/`.
+
 ## Try the app
 
 1. Create a session and enter different nicknames for two people, or select **Just exploring? Try demo nicknames**. The nickname form reads visible input values, including browser autofill.

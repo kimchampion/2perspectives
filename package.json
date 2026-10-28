@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
+    "build:pages": "vite build --base=/2perspectives/",
     "build:standalone": "npm run build && node scripts/build-standalone.mjs",
     "build:copyable": "python3 scripts/build-copyable.py",
     "package:files": "npm run build:standalone && python3 scripts/package-downloads.py",
